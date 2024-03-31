@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>boggle game!</title>
+</head>
+<body>
+    <div class="board">
+        {% for row in board %}
+            <div class="row">
+                {% for letter in row %}
+                    <div class="cell">{{ letter }}</div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+    <form id="guess-form">
+        <input type="text" id="guess" name="guess" autocomplete="off" required>
+        <button type="submit">guess!</button>
+    </form>
+    <div id="result"></div>
+    <p>score: <span id='score'>0</span></p>
+    <p>time left: <span id=timer>60</span> seconds</p>
+
+    <p id="times-played">games played: 0</p>
+    <p id="highest-score">highest score: 0</p>
+
+        
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{{ url_for('static', filename='/script.js') }}"></script>
+</body>
+</html>
